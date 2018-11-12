@@ -125,6 +125,32 @@ b)
   O(n^2)
 
 c) 
+  Modify extractAlignment to count and total optimal alignments per row 
 
-d) 
+  def extractAlignment(s1, s2, table):
+    optimalAlignments = 1
+
+    for i in range(0, len(table)):
+      min = min(table[i])
+      count = 0
+      for j in range(0, len(table[i])):
+        if table[i][j] == min:
+          count += 1
+      optimialAlignments *= count
+
+    return optimalAlignments
+
+  Running time: O(n^2)
+
+  Proof: 
+
+  Loop invariant: Min from row will be selected, the number of occurrences will be counted
+  Initialization: Set optimal alignments to 1
+  Maintenance: Reset count to 0 on outer loop, count instances of min in inner loop, update optimalAlignments on outer loop
+  Termination: Loops terminate when all values of the matrix have been visited 
+
+
+d) Based on the output from partD ([]) these documents could be considered original works as they don't have
+   any common substrings over 10. With lengths lower than 10 they do have some similarities however they 
+   are mostly negligible. These seem like original works based on the results.  
 '''
