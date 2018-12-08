@@ -68,24 +68,10 @@ def problem1():
   B = ''.join(B.split()).replace('>', '')
   C = ''.join(C.split()).replace('>', '')
 
-  '''
-  print(A)
-  print(B)
-  print(C)
-  '''
+  print(lcs(A, B)) # 2017
+  print(lcs(A, C)) # 1985
+  print(lcs(B, C)) # 2434
 
-  '''
-  def lcs(X, Y, m, n):
-    if m == 0 or n == 0:
-      return 0
-    elif X[m - 1] == Y[n - 1]:
-      return 1 + lcs(X, Y, m-1, n-1)
-    else: 
-      return max(lcs(X, Y, m, n - 1), lcs(X, Y, m - 1, n))
-  '''
+  # B and C are human (Homo Sapiens), A is soybean (Glycine Max) because b and c have the longest common substring
 
-  print(lcs(A, B))
-  print(lcs(A, C))
-  print(lcs(B, C))
-  
 problem1()
