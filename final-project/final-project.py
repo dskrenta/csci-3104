@@ -10,16 +10,7 @@ def problem3():
     else:
       return cards.pop()
 
-  def dynamic(cards):
-    left = cards[0]
-    right = cards[len(cards) - 1]
-
-    if left >= right:
-      return cards.pop(0) 
-    else:
-      return cards.pop()
-
-  def dynamic(cards):
+  def player1(cards):
     left = cards[0]
     right = cards[len(cards) - 1]
     nextLeft = 0
@@ -41,14 +32,12 @@ def problem3():
         return cards.pop()
       else: 
         return cards.pop(0)
-      return cards.pop(0)
     else:
       # player 2 will pick right
       if (right + nextLeft) < (left + nextRight):
-        return cards.pop(1)
+        return cards.pop(0)
       else: 
         return cards.pop()
-      return cards.pop()
 
   def main():
     # cards = [5, 10, 15, 5, 10, 20, 4, 1]
@@ -57,7 +46,9 @@ def problem3():
     player2_sum = 0
 
     while len(cards) > 0:
-      player1_sum += dynamic(cards)
+      print(cards)
+      player1_sum += player1(cards)
+      print(cards)
       player2_sum += greedy(cards) 
 
     print('Player 1:', str(player1_sum))
