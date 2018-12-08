@@ -1,44 +1,71 @@
 from random import uniform
 
-def pandasPeril():
-  cards = [5, 10, 15, 5, 10, 20, 4, 1]
-  dynamicExpectedSum = 0
-
+def problem3():
   def greedy(cards):
     left = cards[0]
     right = cards[len(cards) - 1]
 
     if left >= right:
-      cards.pop(0) 
+      return cards.pop(0) 
     else:
-      cards.pop()
+      return cards.pop()
 
   def dynamic(cards):
     left = cards[0]
     right = cards[len(cards) - 1]
-    leftNext = 0
-    rightNext = 0
 
-    if left > right: 
-      # player 2 will pick left
-      if (right + leftNext) > (left + rightNext):
-        cards.pop()
-      else: 
-        cards.pop(0)
-      None
-    elif left < right: 
-      # player 2 will pick right
-      None
+    if left >= right:
+      return cards.pop(0) 
     else:
-      # player 2 will pick left or right
+      return cards.pop()
+
+  def dynamic(cards):
+    left = cards[0]
+    right = cards[len(cards) - 1]
+    nextLeft = 0
+    nextRight = 0
+
+    try: 
+      nextLeft = cards[1]
+    except: 
       None
+    
+    try: 
+      nextRight = cards[len(cards) - 2]
+    except: 
+      None
+
+    if left >= right:
+      # player 2 will pick left
+      if (right + nextLeft) > (left + nextRight):
+        return cards.pop()
+      else: 
+        return cards.pop(0)
+      return cards.pop(0)
+    else:
+      # player 2 will pick right
+      if (right + nextLeft) < (left + nextRight):
+        return cards.pop(1)
+      else: 
+        return cards.pop()
+      return cards.pop()
 
   def main():
+    # cards = [5, 10, 15, 5, 10, 20, 4, 1]
+    cards = [4, 2, 10, 5]
+    player1_sum = 0
+    player2_sum = 0
+
     while len(cards) > 0:
-      dynamic(cards)
-      greedy(cards) 
+      player1_sum += dynamic(cards)
+      player2_sum += greedy(cards) 
+
+    print('Player 1:', str(player1_sum))
+    print('Player 2:', str(player2_sum))
   
   main()
+
+problem3()
 
 def lcs(x, y):
   m = len(x)
@@ -152,4 +179,4 @@ def problem4():
   print(points)
   print(r_coords)
 
-problem4()
+# problem4()
